@@ -88,10 +88,12 @@ test/
     background.test.js       background tabs are hidden and render 0 frames
     favicon.test.js          favicons are fetched by the main process via the tab session; UI CSP blocks http(s) images
     quit.test.js             app exits promptly, also after accessibility mode was used
+    (test/site/site.test.js: 18 tests for the website in real Chrome: axe in both themes, no third-party requests, 360 px layout, Toolbox filters, links, CSP)
     updates.test.js          update-check button: no request until pressed, newer/up-to-date/error paths
 scripts/                     make-installer.js (Squirrel installer), launch-probe.js (can the app start here?), bench.js, proctree.ps1, sign.ps1, verify-package.js, smoke.js, live-demo.js, capture-window.ps1,
                              license-inventory.js, mem-breakdown.js, and the research pipeline (discover*.js, verify-repos.js,
                              triage-discovery.js, build-catalog.js, catalog-classification.js, catalog-additions.js)
+site/                        the public website (index.html, toolbox/, assets/) and the Toolbox data (assets/data/toolbox.json); docs/WEBSITE.md
 .github/                     workflows/ci.yml, workflows/release.yml (tag-triggered; builds, tests, attests, publishes), dependabot.yml
 docs/                        TRADEMARK, ACCESSIBILITY, CODE-SIGNING-POLICY, ARCHITECTURE, SECURITY, DESIGN, PERFORMANCE, ROADMAP, FEATURE-MATRIX, SIGNATURE-FEATURES, LICENSES,
                              LICENSE-INVENTORY, DECISIONS, RELEASE, adr/0001-architecture.md, research/, benchmarks/, screenshots/

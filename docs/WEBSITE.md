@@ -42,6 +42,12 @@ Steps (the order matters because a `CNAME` for a domain that does not resolve ye
 
 Terms worth knowing (js.org/terms.html): you are responsible for the content and for checking that the name does not infringe third-party rights, including trade marks (see [TRADEMARK.md](TRADEMARK.md)); no file or image hosting; they can remove the domain at any time with 7 days' notice.
 
+### Status (2026-10-18)
+- The site is **live** at <https://shipking-ai.github.io/pelorus/>; checked over the real URL: no console errors, no third-party requests, no serious/critical axe violations, 2,802 tools loaded.
+- `pelorus` is **not restricted**, **not already requested** (searched JS.ORG pull requests) and **not in** `ns_active.js`/`records_restricted.js`.
+- The one-line change was inserted in alphabetical order (between `pekanbaru` and `pencil`) into a copy of the current `cnames_active.js` and **JS.ORG's own validator** (`js-org/js.org-cleanup --validate`, run with `npm ci --ignore-scripts` in an isolated folder) reports "Validation completed" for both the original and the changed file.
+- **Not done yet: opening the pull request.** It publishes a request in the owner's name and means accepting JS.ORG's terms, so it waits for an explicit "yes" (see OWNER-STEPS.md).
+
 ### Pull request description (copy exactly; the bot parses it)
 ```
 - [x] There is reasonable content on the page (see: [No Content](https://github.com/js-org/js.org/wiki/No-Content))
