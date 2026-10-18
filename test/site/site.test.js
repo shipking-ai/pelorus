@@ -140,7 +140,9 @@ const noData = () => !fs.existsSync(DATA_FILE) && 'no toolbox data (node scripts
 for (const p of PAGES) {
   for (const scheme of ['dark', 'light']) {
     test(`${p.name} (${scheme}): no serious or critical accessibility violations, no console errors, nothing third-party`, withBrowser(async () => {
-      const { ctx, page, problems, external } = await open(p.url, { scheme });
+      // Reduced motion switches the reveal/fade transitions off. Without it, axe can sample colours while an element is still
+      // fading in and report a false contrast failure (seen once on a slow CI runner).
+      const { ctx, page, problems, external } = await open(p.url, { scheme, reduced: true });
       try {
         if (p.name === 'toolbox') await page.waitForSelector('.tool');
         await page.evaluate(() => document.querySelectorAll('.reveal').forEach((e) => e.classList.add('in')));
