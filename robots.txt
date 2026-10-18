@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://shipking-ai.github.io/pelorus/sitemap.xml
