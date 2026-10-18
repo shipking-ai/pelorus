@@ -40,12 +40,24 @@ You chose "whatever is free and best". For Windows the only free route is **Sign
 
 After signing works, confirm on a clean Windows machine: right-click the installer → Properties → Digital Signatures, or `Get-AuthenticodeSignature .\Pelorus-Setup-<version>.exe | Format-List` shows `Status : Valid`. SmartScreen may still warn for a while: reputation builds with downloads.
 
-## Step 3b — The website address `pelorus.js.org` (free): request submitted, now waiting
-Done on 2026-10-18 with your approval: pull request <https://github.com/js-org/js.org/pull/12795> is open and passed JS.ORG's automated checks; the repository variables and `CNAME` are in place. What happens next is up to JS.ORG's maintainers (usually about a day; many recent requests were closed, so it may be declined).
-- **Until they merge it**, <https://shipking-ai.github.io/pelorus/> redirects to `pelorus.js.org`, which does not resolve yet. Nothing for you to do; do not close or edit the PR.
-- **Watch the PR** (GitHub notifies you by email, or open the link). If a maintainer asks a question, answer there or tell me.
-- **When it is merged:** tell me, and I will enforce HTTPS, update the links in the docs and README, and verify the live site over `https://pelorus.js.org/`.
-- **If it is declined** (the usual reason is "content not directly related to JavaScript"): tell me. The `github.io` address can be restored with two commands (listed in [WEBSITE.md](WEBSITE.md)), and the next free option is another developer-domain service such as is-a.dev.
+## Step 3b — The website address: JS.ORG said no; what to do instead
+**What happened:** the JS.ORG request (pull request js-org/js.org#12795, opened with your approval) was declined on 2026-10-18: *"the site is clearly primarily for your desktop browser, and that does not relate specifically to JavaScript developers."* I rolled the site back, so **https://shipking-ai.github.io/pelorus/ works again** (HTTPS, free). Nothing is broken. The PR page may stay open until a maintainer closes it; you do not need to do anything.
+
+**Your options (pick one; none is urgent):**
+1. **Keep the github.io address.** Zero work. Recommended while the project is a pre-release.
+2. **Try is-a.dev (`pelorus.is-a.dev`), free.** It is the best remaining free option, with two catches: they ask that requests are **not written by AI**, so *you* must write and submit the pull request yourself, and they only accept software-development-related, non-commercial projects (a browser plus a developer toolbox is a judgement call; approval is not assured). Steps:
+   1. Read <https://docs.is-a.dev/quickstart/> and <https://is-a.dev/terms> yourself.
+   2. Fork <https://github.com/is-a-dev/register> (the Fork button), open your fork, go to the `domains` folder → *Add file → Create new file*, name it `pelorus.json`, and put exactly this (an `email` field is optional):
+      ```json
+      {
+          "owner": { "username": "shipking-ai" },
+          "records": { "CNAME": "shipking-ai.github.io" }
+      }
+      ```
+   3. Commit it to your fork, then click **Contribute → Open pull request** to `is-a-dev/register`. **Keep their pull request template** (do not replace it), tick the Terms-of-Service box yourself, paste the link `https://shipking-ai.github.io/pelorus/`, attach a **screenshot** of the site (a screenshot of the home page, or `docs/screenshots/window-dark.png` for the app), and describe the project in your own words (what it is, that it is open source and non-commercial, and why it is software-development related).
+   4. Wait for review and answer any questions. **Only after it is merged:** tell me, and I will set the repository variables `SITE_BASE=https://pelorus.is-a.dev/` and `SITE_CNAME=pelorus.is-a.dev`, re-run the website deploy, and turn on Enforce HTTPS. (If you do it before the merge, the github.io address will redirect to a name that does not exist yet.)
+3. **Buy a domain** (any registrar; a normal `.com` or `.org` has a modest yearly fee). No eligibility rules. Follow GitHub's instructions to point the domain at `shipking-ai.github.io`, then tell me the domain and I will set the variables and the `CNAME` file.
+4. **Make the Toolbox a standalone JavaScript directory** and ask JS.ORG again. Their stated rule is that the site's *primary* subject must be the JavaScript ecosystem. That means splitting the Toolbox into its own site, limited to JavaScript/TypeScript tools, with the browser reduced to a link. It is a real product decision (and may still be declined), so only do it if you want that second site for its own sake.
 
 ## Step 4 — Tests that need a human or a physical machine
 Do these when you can; send me the results and I will record them in the docs.

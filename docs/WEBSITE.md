@@ -31,6 +31,15 @@ npm run site:test                 # axe, responsive layout, filters, link and CS
 | `SITE_BASE` | absolute URL written into `sitemap.xml` / `robots.txt` | `https://shipking-ai.github.io/pelorus/` |
 | `SITE_CNAME` | custom domain written to the `CNAME` file | empty (none) |
 
+## Free domain options after the JS.ORG decline
+JS.ORG's own list of similar services is <https://github.com/js-org/js.org/wiki/Similar-Services>. Reading the current rules (2026-10-18):
+- **Keep the address as it is:** <https://shipking-ai.github.io/pelorus/> works, uses HTTPS and costs nothing. Fine for a pre-release.
+- **is-a.dev (`pelorus.is-a.dev`)**: free; requires the site to be a personal site or a **non-commercial project that is software-development related**, at least somewhat complete, with a preview link **and a screenshot** in the pull request, and the Terms-of-Service checkbox ticked. Their quickstart and README ask requesters **not to use AI to write the request**, so the owner should write and submit it personally; the steps are in [OWNER-STEPS.md](OWNER-STEPS.md) step 3b. A browser might be judged "not software-development related", though the Toolbox helps; approval is not assured either.
+- **Open Domains** has moved to a hosted platform (open-domains.com); its GitHub flow is deprecated. Not evaluated further.
+- **Buy a domain** (a normal `.com`/`.org` costs a modest yearly fee; any registrar): no eligibility rules, works with GitHub Pages via a `CNAME` file and the `SITE_CNAME`/`SITE_BASE` variables described above.
+
+The section below is kept as the record of the JS.ORG attempt.
+
 ## Getting `pelorus.js.org` (JS.ORG)
 JS.ORG gives free `*.js.org` addresses to **GitHub Pages sites whose content is directly about the JavaScript ecosystem**. Its README (read 2026-10-18) is stricter than most summaries: "websites that merely use JavaScript... are not eligible", and the pull-request text must explain why the site *content* (not its code) is relevant to JavaScript developers. A browser project page alone would be a weak fit; the **Toolbox is what makes this request honest**: its content is the JavaScript and web-building ecosystem itself.
 
@@ -46,9 +55,9 @@ Terms worth knowing (js.org/terms.html): you are responsible for the content and
 - The site is **live** at <https://shipking-ai.github.io/pelorus/>; checked over the real URL: no console errors, no third-party requests, no serious/critical axe violations, 2,802 tools loaded.
 - `pelorus` is **not restricted**, **not already requested** (searched JS.ORG pull requests) and **not in** `ns_active.js`/`records_restricted.js`.
 - The one-line change was inserted in alphabetical order (between `pekanbaru` and `pencil`) into a copy of the current `cnames_active.js` and **JS.ORG's own validator** (`js-org/js.org-cleanup --validate`, run with `npm ci --ignore-scripts` in an isolated folder) reports "Validation completed" for both the original and the changed file.
-- **Submitted 2026-10-18:** pull request <https://github.com/js-org/js.org/pull/12795> (title `pelorus.js.org`, from the fork `shipking-ai/js.org`, one added line). Both automated checks passed and the bot commented "All validations passed! Please wait for the JS.org maintainers to process your subdomain request." Many recent JS.ORG requests were closed, so approval is **not** assured.
-- **Custom domain prepared:** repository variables `SITE_BASE=https://pelorus.js.org/` and `SITE_CNAME=pelorus.js.org` are set, the Website workflow was re-run, `gh-pages` now contains `CNAME` and GitHub Pages reports the custom domain `pelorus.js.org`. **Until JS.ORG merges the PR the name does not resolve, so the `github.io` address redirects to a name that does not exist yet.** If the request is declined: `gh variable delete SITE_CNAME --repo shipking-ai/pelorus` and `gh variable set SITE_BASE --repo shipking-ai/pelorus --body https://shipking-ai.github.io/pelorus/`, re-run the Website workflow, and the old address works again.
-- **After the merge:** turn on "Enforce HTTPS" (Settings → Pages, or `gh api -X PUT repos/shipking-ai/pelorus/pages -F https_enforced=true`) once GitHub has issued the certificate, and replace the `github.io` links in the docs with `https://pelorus.js.org/`.
+- **Outcome: declined (2026-10-18).** Pull request <https://github.com/js-org/js.org/pull/12795> passed both automated checks, then a JS.ORG maintainer labelled it "unrelated / unqualified" and wrote: *"I appreciate the toolbox as a subdirectory as a way to make the site more related directly to the JavaScript ecosystem; however, the site is clearly primarily for your desktop browser, and that does not relate specifically to JavaScript developers. Anyone can be the target audience for a browser."* JS.ORG's stated policy is that being built with JavaScript is not a justification; only projects with a clear, direct relation to the JavaScript ecosystem are accepted.
+- **Rolled back the same day:** the repository variable `SITE_CNAME` was deleted, `SITE_BASE` set back to the `github.io` address, the Website workflow re-run, and the `CNAME` file removed from `gh-pages`. <https://shipking-ai.github.io/pelorus/> serves the site again (verified). The fork `shipking-ai/js.org` still exists on the owner's account and is harmless.
+- **What would make a JS.ORG request eligible:** a site whose *primary* subject is the JavaScript ecosystem, for example the Toolbox published on its own as a JavaScript-focused directory (filtered to JS/TS tools, with the browser reduced to a footer link). That is a product decision, not a fix; do not repackage the site just to pass a review.
 
 ### Pull request description (copy exactly; the bot parses it)
 ```
