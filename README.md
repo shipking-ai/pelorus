@@ -26,6 +26,10 @@ Releases are currently **unsigned**. The full policy (what would be signed, from
 - **Authors, reviewers and approvers:** currently one maintainer, [shipking-ai](https://github.com/shipking-ai) (a weakness, stated openly; roles are listed in the policy).
 - **Privacy policy:** [docs/PRIVACY.md](docs/PRIVACY.md). Short form: this program will not transfer any information to other networked systems unless specifically requested by the user or the person installing or operating it; the only things it does on its own are downloading ad-blocker filter lists, and, only if you turn it on, secure-DNS lookups, plus an update check that runs only when you press the button.
 
+## Website and Toolbox
+
+The project site lives in [`site/`](site) (plain HTML/CSS/JS, no third-party requests) and includes **the Pelorus Toolbox**: a searchable, verified directory of open-source tools for building beautiful websites and landing pages ([how it is built and its limits](docs/WEBSITE.md)). It is published to GitHub Pages by `.github/workflows/pages.yml`; `npm run site:test` checks accessibility, layout and the filters in real Chrome.
+
 ## Requirements
 
 Windows 10/11 (tested on Windows 11). Node.js ≥ 22.12 (developed with 26) and npm. Linux and macOS pass the automated tests in CI but nobody has used them by hand yet.

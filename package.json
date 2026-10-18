@@ -13,7 +13,10 @@
     "package": "electron-packager . Pelorus --platform=win32 --arch=x64 --out=out --overwrite --prune=true --ignore=\"^/(docs|test|scripts|out|\\.smoke|\\.git|README\\.md)\" --extra-resource=LICENSE --app-copyright=\"GPL-3.0-or-later\" --win32metadata.CompanyName=Pelorus --win32metadata.ProductName=Pelorus --win32metadata.FileDescription=Pelorus --win32metadata.OriginalFilename=Pelorus.exe",
     "sign": "powershell -NoProfile -File scripts/sign.ps1",
     "package:signed": "npm run package && npm run sign",
-    "installer": "node scripts/make-installer.js"
+    "installer": "node scripts/make-installer.js",
+    "site:build": "node scripts/build-site.js",
+    "site:test": "node --test --test-force-exit --test-timeout=120000 \"test/site/*.test.js\"",
+    "toolbox": "node scripts/build-toolbox.js"
   },
   "dependencies": {
     "@ghostery/adblocker-electron": "2.20.1",

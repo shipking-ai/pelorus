@@ -33,6 +33,8 @@ jobs:
         run: npm run audit
       - name: Licence gate (fails on unknown production licences)
         run: node scripts/license-inventory.js
+      - name: Website tests (static checks, axe, responsive layout, Toolbox) in Chrome
+        run: npm run site:test
       # One file at a time with a 60 s per-test limit: a hang in one test shows up as a failure with the other files' results
       # still visible, instead of a silent 20-minute stall.
       - name: End-to-end tests (includes axe accessibility scan and badssl.com TLS tests)

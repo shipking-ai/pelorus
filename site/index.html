@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pelorus — a privacy-first browser, and a toolbox for building beautiful websites</title>
+<meta name="description" content="Pelorus is an open-source, privacy-focused desktop browser with isolated workspaces and built-in tracker blocking. This site also hosts a verified directory of open-source tools for building beautiful websites and landing pages.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="color-scheme" content="dark light">
+<meta property="og:title" content="Pelorus — take a bearing on the web">
+<meta property="og:description" content="An open-source, privacy-first browser built on Chromium, plus a verified directory of open-source tools for building beautiful websites.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/img/window-dark.png">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/theme-init.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="Pelorus, home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16L12 20z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.2 9.5h7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      Pelorus
+    </a>
+    <nav class="main" aria-label="Main">
+      <a href="#features" class="hide-sm">Browser</a>
+      <a href="#verify" class="hide-sm">Verify</a>
+      <a href="toolbox/">Toolbox</a>
+      <a href="https://github.com/shipking-ai/pelorus" rel="noopener">GitHub</a>
+      <button class="icon-btn" id="theme" type="button" aria-label="Switch colour theme" title="Switch colour theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="h-hero">
+    <div class="wrap grid">
+      <div>
+        <div class="badges">
+          <span class="chip"><span class="dot"></span>Pre-release 0.3.0</span>
+          <span class="chip">Windows · unsigned</span>
+          <span class="chip">GPL-3.0-or-later</span>
+        </div>
+        <h1 id="h-hero">Take a <em>bearing</em> on the web.</h1>
+        <p class="lede mt26">Pelorus is a privacy-first desktop browser built on Chromium. Every project gets its own workspace, trackers are blocked by default, and nothing about how you browse leaves your computer.</p>
+        <div class="btn-row">
+          <a class="btn primary" href="https://github.com/shipking-ai/pelorus/releases" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+            Download for Windows
+          </a>
+          <a class="btn" href="toolbox/">Explore the Toolbox</a>
+        </div>
+        <p class="muted hero-note">An honest pre-release: no extensions yet, not code-signed (Windows will warn), and only Windows has been tested by hand. <a href="#status">What's missing →</a></p>
+      </div>
+      <div class="dial-wrap" id="dial-wrap">
+        <svg class="dial" id="dial" viewBox="-250 -250 500 500" role="img" aria-label="A decorative pelorus dial: a sighting vane that turns to follow your pointer, with a ship's heading line fixed at the top">
+          <defs>
+            <radialGradient id="dialGlow"><stop offset="0" stop-color="var(--accent)" stop-opacity=".16"/><stop offset="1" stop-color="var(--accent)" stop-opacity="0"/></radialGradient>
+          </defs>
+          <circle class="glow" r="240"/>
+          <circle class="ring" r="228"/><circle class="ring" r="176" stroke-dasharray="2 7"/><circle class="ring" r="118"/>
+          <g id="ticks"></g>
+          <g id="vane"><line class="vane" x1="0" y1="0" x2="0" y2="-214"/><circle class="vane-dot" cx="0" cy="-214" r="5"/></g>
+          <line class="heading" x1="0" y1="0" x2="0" y2="-170"/>
+          <circle class="hub" r="9"/>
+        </svg>
+        <div class="dial-readout" aria-hidden="true">relative bearing <b id="bearing">047°</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="flush-top" aria-label="Screenshot">
+    <div class="wrap reveal">
+      <div class="window showcase" id="showcase">
+        <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>Pelorus — vertical tabs, workspaces, local suggestions</span></div>
+        <img src="assets/img/window-dark.png" width="2910" height="1819" alt="The Pelorus browser window in the dark theme: a sidebar with workspaces and vertical tabs, a toolbar with the address box, and the new-tab page showing most-visited pages." fetchpriority="high">
+      </div>
+      <p class="muted shot-cap">A real screenshot of Pelorus 0.3.0 on Windows 11 (dark theme).</p>
+    </div>
+  </section>
+
+  <section id="features" aria-labelledby="h-features">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">What it does today</span>
+        <h2 id="h-features">Small on promises, <em class="ac">careful</em> on defaults.</h2>
+      </div>
+      <div class="features">
+        <article class="card reveal"><div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></div>
+          <h3>Workspaces that are really separate</h3><p>Each workspace has its own cookies, cache, storage, history and permissions. Delete a workspace and its data goes with it. Private tabs live in memory only.</p><a class="more" href="https://github.com/shipking-ai/pelorus/blob/main/docs/ARCHITECTURE.md" rel="noopener">architecture →</a></article>
+        <article class="card reveal"><div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M7 9l3 3-3 3M13 15h4"/></svg></div>
+          <h3>A command palette for everything</h3><p>Ctrl+K searches your tabs, history, bookmarks, workspaces and commands. Suggestions are computed on your computer; your keystrokes are never sent to a search provider.</p></article>
+        <article class="card reveal"><div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>Privacy you can see</h3><p>Ad and tracker blocking, HTTPS-first with no way to click through a bad certificate, tracking-parameter stripping, Global Privacy Control, and deny-by-default permission prompts.</p><a class="more" href="https://github.com/shipking-ai/pelorus/blob/main/docs/SECURITY.md" rel="noopener">threat model →</a></article>
+        <article class="card reveal"><div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></svg></div>
+          <h3>Sleeping tabs, lazy restore</h3><p>Inactive tabs can unload to free memory, and a restart loads only the tab you were looking at. On our two-run benchmark memory landed near Chrome's: a result with caveats, written up in full.</p><a class="more" href="https://github.com/shipking-ai/pelorus/blob/main/docs/PERFORMANCE.md" rel="noopener">the numbers →</a></article>
+        <article class="card reveal"><div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v3h16v-3"/></svg></div>
+          <h3>Downloads that don't bite</h3><p>File names are sanitised, risky types are flagged (including disguised <code>.pdf.exe</code>), and the browser never launches an executable you downloaded.</p></article>
+        <article class="card reveal"><div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3l18 18"/><path d="M10.6 6.1A9.8 9.8 0 0112 6c5 0 8.5 4.2 9.5 6-.5 1-1.7 2.6-3.4 3.9M6.2 6.9C4.1 8.2 2.8 10.2 2.5 12c1 1.800 4.500 6 9.500 6 1.300 0 2.500-.3 3.600-.8"/></svg></div>
+          <h3>No telemetry. Not even a little.</h3><p>The only things Pelorus does by itself: fetch ad-blocker lists, and — only if you switch it on — secure-DNS lookups. The update check runs only when you press its button.</p><a class="more" href="https://github.com/shipking-ai/pelorus/blob/main/docs/PRIVACY.md" rel="noopener">privacy policy →</a></article>
+      </div>
+
+      <figure class="duo reveal">
+        <div class="window"><img src="assets/img/palette-dark.png" width="2910" height="1819" alt="The Pelorus command palette open over a page, listing matching commands such as Open settings." loading="lazy"></div>
+        <figcaption>The command palette (Ctrl+K). Everything it searches lives on your computer.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="band" id="verify" aria-labelledby="h-verify">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">Built to be checked</span>
+        <h2 id="h-verify">Don't trust us. <em class="ac">Verify.</em></h2>
+        <p class="lede mt18">Pelorus is not code-signed yet, so we give you better ways to check what you downloaded than a publisher name.</p>
+      </div>
+      <div class="split">
+        <div class="card reveal">
+          <h3>Check the download</h3>
+          <p>Every release is built by GitHub Actions from a tag, with a checksum file, an SBOM and a build-provenance attestation.</p>
+          <pre class="code" tabindex="0"><button class="copy" type="button" data-copy="gh attestation verify Pelorus-Setup-0.3.0.exe --repo shipking-ai/pelorus">copy</button>gh attestation verify Pelorus-Setup-0.3.0.exe --repo shipking-ai/pelorus
+Get-FileHash .\Pelorus-Setup-0.3.0.exe -Algorithm SHA256</pre>
+        </div>
+        <div class="card reveal">
+          <h3>Read the tests</h3>
+          <ul class="ticks"><li>73 unit tests, including seeded fuzzing (it found five real bugs)</li><li>55 end-to-end tests of the real app, plus accessibility scans in both themes</li><li>Passing on Windows, Ubuntu and macOS in CI</li><li><a href="https://github.com/shipking-ai/pelorus/blob/main/docs/FEATURE-MATRIX.md" rel="noopener">What's tested, and what isn't →</a></li></ul>
+        </div>
+        <div class="card reveal">
+          <h3>Report what we got wrong</h3>
+          <p>Security issues go through GitHub's private vulnerability reporting, and the project says plainly what hasn't been reviewed: there has been no independent security audit yet.</p>
+          <a class="more" href="https://github.com/shipking-ai/pelorus/security/advisories/new" rel="noopener">report privately →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="status" aria-labelledby="h-status">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">Where it stands</span>
+        <h2 id="h-status">An honest <em class="ac">pre-release.</em></h2>
+      </div>
+      <div class="status">
+        <div class="card reveal"><h3>Works today</h3>
+          <ul class="ticks"><li>Browsing, tabs, workspaces, private tabs, split view</li><li>Tracker blocking, HTTPS-first, permission prompts, safe downloads</li><li>Session restore, sleeping tabs, command palette, history and bookmarks</li><li>Per-user installer and zip for Windows x64</li></ul></div>
+        <div class="card reveal"><h3>Not there yet</h3>
+          <ul class="ticks no"><li>Extensions, sync and a password manager</li><li>Code signing (Windows will warn; verify the download instead)</li><li>An independent security review</li><li>Hands-on testing on macOS and Linux (CI passes; nobody has used it by hand)</li><li>Screen-reader testing: automated accessibility checks only, so far</li></ul></div>
+      </div>
+      <p class="muted reveal note-wide">The full status, open issues and roadmap live in the <a href="https://github.com/shipking-ai/pelorus/blob/main/HANDOFF.md" rel="noopener">handoff document</a> in the repository.</p>
+    </div>
+  </section>
+
+  <section class="teaser" aria-labelledby="h-toolbox">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">Also here</span>
+        <h2 id="h-toolbox">The Toolbox: open-source tools for <em class="ac">beautiful</em> websites.</h2>
+        <p class="lede lede-60">Pelorus is written in JavaScript, and the people who build for the web are the people we want to help. So we built a directory of the open-source libraries, frameworks, templates and builders for making fast, accessible, good-looking sites and landing pages, with licences and activity checked against GitHub, not copied from memory.</p>
+      </div>
+      <div class="stat-row reveal" id="stats" aria-live="polite">
+        <div class="stat"><b data-k="total">…</b><span>tools</span></div>
+        <div class="stat"><b data-k="curated">…</b><span>hand-picked &amp; verified</span></div>
+        <div class="stat"><b data-k="cats">…</b><span>categories</span></div>
+      </div>
+      <div class="chips reveal" id="cat-chips" aria-label="Browse by category"></div>
+      <div class="btn-row reveal"><a class="btn primary" href="toolbox/">Open the Toolbox</a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="cols">
+      <div><a class="brand flush" href="./"><svg class="sm-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16L12 20z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.2 9.5h7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Pelorus</a>
+        <p class="foot-blurb">Open source, GPL-3.0-or-later. A privacy-first browser and a verified toolbox for the web.</p></div>
+      <div><h4>Browser</h4><a href="https://github.com/shipking-ai/pelorus/releases" rel="noopener">Releases</a><a href="https://github.com/shipking-ai/pelorus/blob/main/docs/SECURITY.md" rel="noopener">Security</a><a href="https://github.com/shipking-ai/pelorus/blob/main/docs/PRIVACY.md" rel="noopener">Privacy policy</a><a href="https://github.com/shipking-ai/pelorus/blob/main/docs/CODE-SIGNING-POLICY.md" rel="noopener">Code signing policy</a></div>
+      <div><h4>Project</h4><a href="https://github.com/shipking-ai/pelorus" rel="noopener">Source code</a><a href="https://github.com/shipking-ai/pelorus/blob/main/HANDOFF.md" rel="noopener">Status &amp; roadmap</a><a href="https://github.com/shipking-ai/pelorus/blob/main/docs/research/CATALOG.md" rel="noopener">Browser catalog</a></div>
+      <div><h4>Toolbox</h4><a href="toolbox/">All tools</a><a href="toolbox/#c=landing">Landing pages</a><a href="toolbox/#c=motion">Animation</a><a href="toolbox/#c=creative">3D &amp; WebGL</a></div>
+    </div>
+    <div class="fine"><span>This site loads nothing from third parties: no analytics, no cookies, no external fonts.</span><span>Pelorus is a working name; see the <a class="inline" href="https://github.com/shipking-ai/pelorus/blob/main/docs/TRADEMARK.md" rel="noopener">trademark note</a>.</span></div>
+  </div>
+</footer>
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/home.js" defer></script>
+</body>
+</html>

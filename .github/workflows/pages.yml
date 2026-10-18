@@ -1,0 +1,73 @@
+name: Website
+
+# Tests the site in site/ with real Chrome, then publishes it to the gh-pages branch (GitHub Pages serves that branch).
+# Repository variables switch the address without code changes:
+#   SITE_BASE   absolute URL used in sitemap.xml/robots.txt   (default https://shipking-ai.github.io/pelorus/)
+#   SITE_CNAME  custom domain written to CNAME                (default empty = none; set to pelorus.js.org once js.org DNS exists)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - 'scripts/build-site.js'
+      - 'test/site/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: website
+  cancel-in-progress: false
+
+jobs:
+  test:
+    name: Test the website
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Website tests (static checks, axe accessibility, responsive layout, Toolbox behaviour) in Google Chrome
+        run: node --test --test-force-exit --test-timeout=120000 "test/site/*.test.js"
+
+  deploy:
+    name: Publish to gh-pages
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: Build
+        env:
+          SITE_BASE: ${{ vars.SITE_BASE }}
+          SITE_CNAME: ${{ vars.SITE_CNAME }}
+        run: |
+          base="${SITE_BASE:-https://shipking-ai.github.io/pelorus/}"
+          if [ -n "$SITE_CNAME" ]; then node scripts/build-site.js --base "$base" --cname "$SITE_CNAME"; else node scripts/build-site.js --base "$base"; fi
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd _site
+          git init -q -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Deploy website from ${GITHUB_SHA}"
+          git push -q --force "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
