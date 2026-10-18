@@ -40,11 +40,12 @@ You chose "whatever is free and best". For Windows the only free route is **Sign
 
 After signing works, confirm on a clean Windows machine: right-click the installer → Properties → Digital Signatures, or `Get-AuthenticodeSignature .\Pelorus-Setup-<version>.exe | Format-List` shows `Status : Valid`. SmartScreen may still warn for a while: reputation builds with downloads.
 
-## Step 3b — The website address `pelorus.js.org` (free)
-The website and Toolbox are live at <https://shipking-ai.github.io/pelorus/>. To get the short free address `pelorus.js.org`:
-1. Tell me **"submit the JS.ORG request"**. I will fork `js-org/js.org`, add the single validated line, and open the pull request with the exact text in [WEBSITE.md](WEBSITE.md). That text includes ticking "I have read and accepted the Terms and Conditions" (js.org/terms.html: you are responsible for the content and for the name not infringing trade marks, including the open question in [TRADEMARK.md](TRADEMARK.md); no file/image hosting; they may remove the domain with 7 days' notice), so I need your explicit yes.
-2. JS.ORG may reply on the pull request (their rule is that the *content* must be directly relevant to JavaScript developers; the Toolbox is why this request is honest). If they ask for changes, tell me.
-3. Right after the PR is opened I set the repository variables `SITE_BASE=https://pelorus.js.org/` and `SITE_CNAME=pelorus.js.org` and re-run the Website workflow so the `CNAME` file exists on `gh-pages`. Note: until the PR is merged (about a day), the `github.io` address redirects to the not-yet-existing name; if you would rather keep the `github.io` link working during the wait, say so and I will set the variables only after the merge.
+## Step 3b — The website address `pelorus.js.org` (free): request submitted, now waiting
+Done on 2026-10-18 with your approval: pull request <https://github.com/js-org/js.org/pull/12795> is open and passed JS.ORG's automated checks; the repository variables and `CNAME` are in place. What happens next is up to JS.ORG's maintainers (usually about a day; many recent requests were closed, so it may be declined).
+- **Until they merge it**, <https://shipking-ai.github.io/pelorus/> redirects to `pelorus.js.org`, which does not resolve yet. Nothing for you to do; do not close or edit the PR.
+- **Watch the PR** (GitHub notifies you by email, or open the link). If a maintainer asks a question, answer there or tell me.
+- **When it is merged:** tell me, and I will enforce HTTPS, update the links in the docs and README, and verify the live site over `https://pelorus.js.org/`.
+- **If it is declined** (the usual reason is "content not directly related to JavaScript"): tell me. The `github.io` address can be restored with two commands (listed in [WEBSITE.md](WEBSITE.md)), and the next free option is another developer-domain service such as is-a.dev.
 
 ## Step 4 — Tests that need a human or a physical machine
 Do these when you can; send me the results and I will record them in the docs.
