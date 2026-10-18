@@ -32,6 +32,8 @@ npm run site:test                 # axe, responsive layout, filters, link and CS
 | `SITE_CNAME` | custom domain written to the `CNAME` file | empty (none) |
 
 ## Free domain options after the JS.ORG decline
+**Full sourced sweep (2026-10-18): [DOMAINS.md](DOMAINS.md)**: what is free, what is taken, what "for ever" can and cannot mean. The short list below predates it.
+
 JS.ORG's own list of similar services is <https://github.com/js-org/js.org/wiki/Similar-Services>. Reading the current rules (2026-10-18):
 - **Keep the address as it is:** <https://shipking-ai.github.io/pelorus/> works, uses HTTPS and costs nothing. Fine for a pre-release.
 - **is-a.dev (`pelorus.is-a.dev`)**: free; requires the site to be a personal site or a **non-commercial project that is software-development related**, at least somewhat complete, with a preview link **and a screenshot** in the pull request, and the Terms-of-Service checkbox ticked. Their quickstart and README ask requesters **not to use AI to write the request**, so the owner should write and submit it personally; the steps are in [OWNER-STEPS.md](OWNER-STEPS.md) step 3b. A browser might be judged "not software-development related", though the Toolbox helps; approval is not assured either.

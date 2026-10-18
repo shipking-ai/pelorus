@@ -43,6 +43,8 @@ After signing works, confirm on a clean Windows machine: right-click the install
 ## Step 3b — The website address: JS.ORG said no; what to do instead
 **What happened:** the JS.ORG request (pull request js-org/js.org#12795, opened with your approval) was declined on 2026-10-18: *"the site is clearly primarily for your desktop browser, and that does not relate specifically to JavaScript developers."* I rolled the site back, so **https://shipking-ai.github.io/pelorus/ works again** (HTTPS, free). Nothing is broken. The PR page may stay open until a maintainer closes it; you do not need to do anything.
 
+**A wider, sourced sweep of free domains is in [DOMAINS.md](DOMAINS.md)** (no free domain is guaranteed forever; it ranks the options and lists which `pelorus.*` names are already taken).
+
 **Your options (pick one; none is urgent):**
 1. **Keep the github.io address.** Zero work. Recommended while the project is a pre-release.
 2. **Try is-a.dev (`pelorus.is-a.dev`), free.** It is the best remaining free option, with two catches: they ask that requests are **not written by AI**, so *you* must write and submit the pull request yourself, and they only accept software-development-related, non-commercial projects (a browser plus a developer toolbox is a judgement call; approval is not assured). Steps:
