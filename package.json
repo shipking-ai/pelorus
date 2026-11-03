@@ -19,7 +19,7 @@
     "toolbox": "node scripts/build-toolbox.js"
   },
   "dependencies": {
-    "@ghostery/adblocker-electron": "2.20.1",
+    "@ghostery/adblocker-electron": "2.20.3",
     "@ghostery/adblocker-electron-preload": "2.20.1"
   },
   "devDependencies": {
