@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@ghostery/adblocker-electron": "2.20.1",
-    "@ghostery/adblocker-electron-preload": "2.20.1"
+    "@ghostery/adblocker-electron-preload": "2.20.3"
   },
   "devDependencies": {
     "@electron/packager": "20.3.0",
